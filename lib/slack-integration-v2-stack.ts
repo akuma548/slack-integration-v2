@@ -78,6 +78,7 @@ export class SlackIntegrationV2Stack extends Stack {
     spawnSync('npm', ['ci'], {
       cwd: path.join(lambdaDynamoInserterBasePath, 'baseLayer', 'nodejs'),
       env: process.env,
+      shell: true,
     });
     const lambdaDynamoInserterLayer = new lambda.LayerVersion(this, 'dynamoinserter-layer', {
       code: lambda.Code.fromAsset(path.join(lambdaDynamoInserterBasePath, 'baseLayer')),
@@ -111,6 +112,7 @@ export class SlackIntegrationV2Stack extends Stack {
     spawnSync('npm', ['ci'], {
       cwd: path.join(lambdaTransformerBasePath, 'baseLayer', 'nodejs'),
       env: process.env,
+      shell: true,
     });
     const lambdaTransformerLayer = new lambda.LayerVersion(this, 'transformer-layer', {
       code: lambda.Code.fromAsset(path.join(lambdaTransformerBasePath, 'baseLayer')),
@@ -191,6 +193,7 @@ export class SlackIntegrationV2Stack extends Stack {
     spawnSync('npm', ['ci'], {
       cwd: path.join(lambdaSlackNotifierBasePath, 'baseLayer', 'nodejs'),
       env: process.env,
+      shell: true,
     });
     const lambdaSlackNotifierLayer = new lambda.LayerVersion(this, 'slacknotifier-layer', {
       code: lambda.Code.fromAsset(path.join(lambdaSlackNotifierBasePath, 'baseLayer')),
