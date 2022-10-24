@@ -1,10 +1,25 @@
-# Welcome to your CDK TypeScript project
+# Slack TA Candadate Integration Project
 
-This is a blank project for CDK development with TypeScript.
+## To run the project
+* `npm ci`
+* populate `.env` with the required fields:
+  * `SLACK_BOT_TOKEN`
+  * `SLACK_SIGNING_SECRET`
+  * `SLACK_APP_TOKEN`
+* ensure that you have your AWS CLI setup: https://docs.aws.amazon.com/polly/latest/dg/setup-aws-cli.html
+* if this is your first time using the AWS CDK on your AWS Account, you need to bootstrap it: `npm run cdk bootstrap`
+* verify the tests: `npm test`
+* deploy the solution: `npm run cdk deploy`
 
-The `cdk.json` file tells the CDK Toolkit how to execute your app.
+## Integrate the output to your Slack App
+* node the base URL supplied as the `restapiEndpoint` output by the `deploy` command.
+* supply your Slack App with the base URL + /slack/interactive
 
-## Useful commands
+## Integrate the output to your Github repo
+* supply your github repo webhook with the base URL + github/hooks
+* enable all events
+
+## Useful CDK commands
 
 * `npm run build`   compile typescript to js
 * `npm run watch`   watch for changes and compile
